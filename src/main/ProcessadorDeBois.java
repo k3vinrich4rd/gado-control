@@ -1,4 +1,7 @@
+package main;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ProcessadorDeBois {
@@ -9,7 +12,12 @@ public class ProcessadorDeBois {
         bois.add(boi);
     }
 
+    public List<Boi> getBois() {
+        return Collections.unmodifiableList(bois);
+    }
+
     public double somaPeso() {
+        if (bois.isEmpty()) return 0.0;
         double soma = 0.0;
         for (Boi boi : bois) {
             soma += boi.getPeso();
@@ -18,10 +26,10 @@ public class ProcessadorDeBois {
     }
 
     public int somaIdade() {
+        if (bois.isEmpty()) return 0;
         int soma = 0;
         for (Boi boi : bois) {
             soma += boi.getIdade();
-
         }
         return soma;
     }
@@ -38,7 +46,6 @@ public class ProcessadorDeBois {
 
     public Boi boiMaisJovem() {
         if (bois.isEmpty()) return null;
-
         Boi boiMaisNovo = bois.get(0);
         for (Boi boi : bois) {
             if (boi.getIdade() < boiMaisNovo.getIdade()) {
@@ -50,9 +57,7 @@ public class ProcessadorDeBois {
 
     public Boi boiMaisVelho() {
         if (bois.isEmpty()) return null;
-
         Boi boiMaisVelho = bois.get(0);
-
         for (Boi boi : bois) {
             if (boi.getIdade() > boiMaisVelho.getIdade()) {
                 boiMaisVelho = boi;
@@ -63,9 +68,7 @@ public class ProcessadorDeBois {
 
     public Boi boiMaisPesado() {
         if (bois.isEmpty()) return null;
-
         Boi boiMaisPesado = bois.get(0);
-
         for (Boi boi : bois) {
             if (boi.getPeso() > boiMaisPesado.getPeso()) {
                 boiMaisPesado = boi;
@@ -76,7 +79,6 @@ public class ProcessadorDeBois {
 
     public Boi boiMaisLeve() {
         if (bois.isEmpty()) return null;
-
         Boi boiMaisLeve = bois.get(0);
         for (Boi boi : bois) {
             if (boi.getPeso() < boiMaisLeve.getPeso()) {
@@ -88,7 +90,7 @@ public class ProcessadorDeBois {
 
     @Override
     public String toString() {
-        return "ProcessadorDeBois {\n" +
+        return "main.ProcessadorDeBois {\n" +
                 "  Bois: " + bois + "\n" +
                 "}";
     }
